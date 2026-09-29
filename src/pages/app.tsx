@@ -1,22 +1,12 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "react-router";
 import { Plane, PlaneTakeoff } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { useAuthUser } from "@/hooks/use-auth-user";
 
-export const Route = createFileRoute("/_authenticated/app")({
-  head: () => ({
-    meta: [
-      { title: "App — Flight Price Notifier" },
-      { name: "description", content: "Your route-tracking dashboard." },
-      { name: "robots", content: "noindex" },
-    ],
-  }),
-  component: AppPage,
-});
 
-function AppPage() {
+export function AppPage() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { user, loaded } = useAuthUser();
@@ -25,11 +15,13 @@ function AppPage() {
     await queryClient.cancelQueries();
     queryClient.clear();
     await supabase.auth.signOut();
-    navigate({ to: "/signin", replace: true });
+    navigate("/signin", { replace: true });
   }
 
   return (
     <div className="hero-glow flex min-h-screen flex-col">
+      <title>App — Flight Price Notifier</title>
+      <meta name="robots" content="noindex" />
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
         <Link to="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
           <Plane className="size-5 text-primary" aria-hidden />

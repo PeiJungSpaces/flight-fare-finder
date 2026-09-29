@@ -70,3 +70,20 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Stack & deployment (Vite SPA)
+
+This app is a plain **Vite + React single-page app** with client-side routing via **React Router** — no SSR, no server runtime.
+
+| Route | Page |
+| --- | --- |
+| `/` | Landing page |
+| `/signin` (alias `/sign-in`) | Sign in |
+| `/signup` (alias `/sign-up`) | Sign up |
+| `/app` | Authenticated app shell (redirects to `/signin` when signed out) |
+
+- `bun run dev` — local dev server
+- `bun run build` — static build to `dist/`
+- `bun run preview` — preview the production build
+
+**Vercel:** `vercel.json` sets the Vite preset, `dist/` output, and a SPA fallback rewrite so deep links like `/app` resolve client-side. Required env vars (already in `.env`): `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`.

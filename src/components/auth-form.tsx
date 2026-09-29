@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "react-router";
 import { Plane } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -30,11 +30,12 @@ export function AuthForm({ mode }: { mode: "signin" | "signup" }) {
       return;
     }
     // Email confirmation is disabled — signUp returns a live session.
-    navigate({ to: "/app", replace: true });
+    navigate("/app", { replace: true });
   }
 
   return (
     <div className="hero-glow flex min-h-screen flex-col">
+      <title>{isSignIn ? "登入 — Flight Price Notifier" : "註冊 — Flight Price Notifier"}</title>
       <header className="mx-auto flex w-full max-w-6xl items-center px-6 py-5">
         <Link to="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
           <Plane className="size-5 text-primary" aria-hidden />

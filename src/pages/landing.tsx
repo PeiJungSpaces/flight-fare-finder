@@ -1,30 +1,9 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link } from "react-router";
 import { Plane, Radar, BellRing, CalendarX } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
 import { useAuthUser } from "@/hooks/use-auth-user";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Flight Price Notifier — 機票降價通知" },
-      {
-        name: "description",
-        content:
-          "設定航線與目標價，機票降價就通知你。Set a route and a target price — we email you when the fare drops.",
-      },
-      { property: "og:title", content: "Flight Price Notifier — 機票降價通知" },
-      {
-        property: "og:description",
-        content:
-          "設定航線與目標價，機票降價就通知你。Set a route and a target price — we email you when the fare drops.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-  }),
-  component: LandingPage,
-});
 
 const features = [
   {
@@ -47,11 +26,12 @@ const features = [
   },
 ];
 
-function LandingPage() {
+export function LandingPage() {
   const { user, loaded } = useAuthUser();
 
   return (
     <div className="hero-glow flex min-h-screen flex-col">
+      <title>Flight Price Notifier — 機票降價通知</title>
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
         <Link to="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
           <Plane className="size-5 text-primary" aria-hidden />
