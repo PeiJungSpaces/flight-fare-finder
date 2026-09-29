@@ -20,7 +20,7 @@ Card 3: 「隨時取消 (Cancel anytime)」 — 月訂閱制，不想用隨時�
 
 Footer with copyright 「© 2026 Flight Price Notifier」.
 
-Authentication using Lovable's built-in Supabase-style auth (use whatever auth backend Lovable provides by default — Lovable Cloud is fine for this v1; we'll swap to a user-owned Supabase project in a later step):
+Authentication using Supabase Auth on the user-owned Supabase project:
 
 Sign Up page with email + password
 
@@ -86,4 +86,8 @@ This app is a plain **Vite + React single-page app** with client-side routing vi
 - `bun run build` — static build to `dist/`
 - `bun run preview` — preview the production build
 
-**Vercel:** `vercel.json` sets the Vite preset, `dist/` output, and a SPA fallback rewrite so deep links like `/app` resolve client-side. Required env vars (already in `.env`): `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`.
+**Vercel:** `vercel.json` sets the Vite preset, `dist/` output, and a SPA fallback rewrite so deep links like `/app` resolve client-side. Required env vars (already in `.env`, template in `.env.example`): `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`. Add the same two variables in Vercel → Project Settings → Environment Variables.
+
+## Backend
+
+Auth runs on the project's own Supabase project (`isubkriftrycqycjdplp`). The client is created once in `src/integrations/supabase/client.ts` and reads only `import.meta.env.VITE_SUPABASE_URL` and `import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY` (the `sb_publishable_…` key, which replaces the legacy anon key). Users are stored in Supabase's `auth.users`.
