@@ -51,11 +51,11 @@ export function LandingPage() {
         {/* Hero */}
         <section className="mx-auto flex max-w-3xl flex-col items-center px-6 pb-24 pt-20 text-center sm:pt-28">
           <Reveal>
-            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground backdrop-blur-md">
               <span className="size-1.5 rounded-full bg-primary" aria-hidden />
               台北出發 · 東京 / 首爾航線
             </p>
-            <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
+            <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-6xl">
               Flight Price Notifier
             </h1>
             <p className="mt-6 text-xl font-medium text-foreground sm:text-2xl">
@@ -80,7 +80,7 @@ export function LandingPage() {
           <div className="grid gap-5 sm:grid-cols-3">
             {features.map((feature, i) => (
               <Reveal key={feature.title} delay={i * 120}>
-                <article className="h-full rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
+                <article className="cloud-shadow h-full rounded-2xl border border-white/60 bg-card p-6 backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-primary/40">
                   <div className="mb-4 inline-flex rounded-xl bg-accent p-2.5">
                     <feature.icon className="size-5 text-primary" aria-hidden />
                   </div>
@@ -98,7 +98,7 @@ export function LandingPage() {
         </section>
       </main>
 
-      <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
+      <footer className="border-t border-white/40 bg-card py-8 text-center text-xs text-muted-foreground backdrop-blur-md">
         © 2026 Flight Price Notifier
       </footer>
     </div>

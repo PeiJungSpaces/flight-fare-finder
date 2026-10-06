@@ -6,7 +6,8 @@
 
 /*
  * Design system: Flight Price Notifier
- * Dark theme — near-black violet-tinted background, violet accent, Inter.
+ * "Highland meadow" — painterly light theme: summer-sky blue, cloud-white
+ * frosted cards, meadow-green accents, slate-stone text.
  */
 
 @theme inline {
@@ -47,33 +48,39 @@
 }
 
 :root {
-  --radius: 0.75rem;
-  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --background: oklch(0.12 0.02 300);
-  --foreground: oklch(0.96 0.01 300);
-  --card: oklch(0.165 0.025 300);
-  --card-foreground: oklch(0.96 0.01 300);
-  --popover: oklch(0.165 0.025 300);
-  --popover-foreground: oklch(0.96 0.01 300);
-  --primary: oklch(0.62 0.22 293);
-  --primary-foreground: oklch(0.98 0.01 293);
-  --secondary: oklch(0.21 0.035 300);
-  --secondary-foreground: oklch(0.9 0.02 300);
-  --muted: oklch(0.21 0.035 300);
-  --muted-foreground: oklch(0.66 0.03 300);
-  --accent: oklch(0.25 0.06 293);
-  --accent-foreground: oklch(0.96 0.01 293);
-  --destructive: oklch(0.6 0.2 25);
-  --destructive-foreground: oklch(0.98 0.01 25);
-  --border: oklch(1 0 0 / 9%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.62 0.22 293);
-  --glow: oklch(0.62 0.22 293 / 45%);
-  --chart-1: oklch(0.62 0.22 293);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  --radius: 0.875rem;
+  --font-display: "Nunito Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Pale summer sky */
+  --background: oklch(0.955 0.022 225);
+  /* Deep weathered-stone slate */
+  --foreground: oklch(0.28 0.04 235);
+  /* Sunlit cloud — translucent so the painted landscape shows through */
+  --card: oklch(0.99 0.008 225 / 78%);
+  --card-foreground: oklch(0.28 0.04 235);
+  --popover: oklch(0.99 0.008 225);
+  --popover-foreground: oklch(0.28 0.04 235);
+  /* Meadow green */
+  --primary: oklch(0.56 0.15 138);
+  --primary-foreground: oklch(0.99 0.01 120);
+  --secondary: oklch(0.92 0.03 225);
+  --secondary-foreground: oklch(0.32 0.04 235);
+  --muted: oklch(0.92 0.025 225);
+  --muted-foreground: oklch(0.46 0.04 235);
+  /* Moss on stone */
+  --accent: oklch(0.92 0.07 132);
+  --accent-foreground: oklch(0.32 0.07 140);
+  --destructive: oklch(0.56 0.2 25);
+  --destructive-foreground: oklch(0.99 0.01 25);
+  --border: oklch(0.4 0.05 235 / 16%);
+  --input: oklch(0.4 0.05 235 / 24%);
+  --ring: oklch(0.56 0.15 138);
+  /* Soft sky-blue haze used for shadows / glows */
+  --glow: oklch(0.6 0.09 230 / 40%);
+  --chart-1: oklch(0.56 0.15 138);
+  --chart-2: oklch(0.62 0.1 225);
+  --chart-3: oklch(0.8 0.15 125);
+  --chart-4: oklch(0.5 0.04 235);
+  --chart-5: oklch(0.65 0.18 10);
 }
 
 @layer base {
@@ -89,11 +96,25 @@
   }
 }
 
-/* Ambient hero glow behind the landing hero */
+/* Painted landscape backdrop: sky wash on top for legibility, meadow below */
 @utility hero-glow {
   background:
-    radial-gradient(60rem 32rem at 50% -10%, var(--glow), transparent 70%),
+    linear-gradient(
+      to bottom,
+      oklch(0.97 0.02 225 / 88%) 0%,
+      oklch(0.96 0.025 225 / 62%) 30%,
+      oklch(0.96 0.025 225 / 22%) 62%,
+      oklch(0.3 0.06 150 / 25%) 100%
+    ),
+    url("/meadow.webp") center 70% / cover no-repeat,
     var(--color-background);
+}
+
+/* Soft painterly drop shadow for floating "cloud" surfaces */
+@utility cloud-shadow {
+  box-shadow:
+    0 1px 0 0 oklch(1 0 0 / 70%) inset,
+    0 18px 40px -18px oklch(0.35 0.07 230 / 45%);
 }
 
 /* Fade-in on scroll (driven by Reveal component adding .is-visible) */

@@ -29,14 +29,14 @@ export function AppPage() {
         </Link>
         <button
           onClick={handleSignOut}
-          className="rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40 hover:text-primary"
+          className="rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium backdrop-blur-md transition-colors hover:border-primary/40 hover:text-primary"
         >
           Sign out / 登出
         </button>
       </header>
 
       <main className="flex flex-1 items-center justify-center px-6 pb-20">
-        <div className="w-full max-w-lg rounded-2xl border border-border bg-card p-10 text-center shadow-[0_0_60px_-20px_var(--glow)]">
+        <div className="cloud-shadow w-full max-w-lg rounded-2xl border border-white/60 bg-card p-10 text-center backdrop-blur-md">
           <div className="mx-auto mb-6 inline-flex rounded-2xl bg-accent p-3">
             <PlaneTakeoff className="size-7 text-primary" aria-hidden />
           </div>

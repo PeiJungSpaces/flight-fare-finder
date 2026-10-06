@@ -44,7 +44,7 @@ export function AuthForm({ mode }: { mode: "signin" | "signup" }) {
       </header>
 
       <main className="flex flex-1 items-center justify-center px-6 pb-20">
-        <div className="w-full max-w-sm rounded-2xl border border-border bg-card p-8 shadow-[0_0_60px_-20px_var(--glow)]">
+        <div className="cloud-shadow w-full max-w-sm rounded-2xl border border-white/60 bg-card p-8 backdrop-blur-md">
           <h1 className="text-2xl font-bold tracking-tight">
             {isSignIn ? "登入" : "建立帳號"}
           </h1>
